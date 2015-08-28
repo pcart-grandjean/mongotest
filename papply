@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+puppet=`which puppet`
+sudo ${puppet} apply --modulepath=forge manifests/site.pp --hiera_config hiera.yaml
