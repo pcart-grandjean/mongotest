@@ -1,0 +1,18 @@
+---
+# See http://en.wikipedia.org/wiki/YAML for general info on YAML file format
+# We will only use data files in the YAML format
+:backends:
+  - yaml
+
+# This is where the data files will be located
+:yaml:
+  :datadir: hieradata
+
+:hierarchy:
+  # Common values that can not be overloaded by system specific datafiles are in 'global.yaml'
+  - global
+  # Data specific to a node. Ex: node/ncepaas0024.yaml
+  - "node/%{hostname}"
+  # Defaults values that can be overloaded by system specific data are in 'defaults.yaml'
+  - defaults
+...

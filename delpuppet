@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+sudo service puppet stop
+sudo apt-get -y purge facter
+sudo apt-get -y purge hiera
+sudo apt-get -y purge puppet*
+sudo apt-get -y autoremove
+sudo rm -rf /var/log/puppet
+sudo rm -rf /var/lib/puppet
+sudo rm -rf /opt/puppetlabs
+sudo rm -rf /usr/share/bash-completion/completions/puppet*
+sudo rm -rf /var/cache/apt/archives/*puppet*
+sudo rm -rf /var/lib/apt/lists/*puppet*
+sudo rm -f /usr/bin/puppet
+sudo rm -f /usr/bin/hiera
+sudo rm -f /usr/bin/mco
+sudo rm -f /usr/bin/facter
+
+echo "Any puppet packages left ?"
+dpkg --list | grep puppet

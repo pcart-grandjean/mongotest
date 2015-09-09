@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+# This installs Puppet 4.2.1
+rm -f *.deb
+wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb --no-check-certificate
+sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+sudo apt-get update
+sudo apt-get install -y puppet-agent
+
+sudo ln -s /opt/puppetlabs/puppet/bin/puppet /usr/bin/puppet
+sudo ln -s /opt/puppetlabs/puppet/bin/hiera /usr/bin/hiera
+sudo ln -s /opt/puppetlabs/puppet/bin/mco /usr/bin/mco
+sudo ln -s /opt/puppetlabs/puppet/bin/facter /usr/bin/facter

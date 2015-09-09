@@ -2,6 +2,8 @@
 
 ## Environment setup
 
+### Install Puppet 4.x (mongodb module will fail)
+
 ```
 $ wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb --no-check-certificate
 ...
@@ -14,6 +16,22 @@ $ sudo apt-get upgrade puppet-agent
 $ /opt/puppetlabs/bin/puppet --version
 4.2.0
 ```
+
+### Install Puppet 3.x (mongodb module will work)
+
+```
+$ wget https://apt.puppetlabs.com/puppetlabs-release-pc1-trusty.deb --no-check-certificate
+...
+$ sudo dpkg -i puppetlabs-release-pc1-trusty.deb
+...
+$ sudo apt-get update
+...
+$ sudo apt-get upgrade puppet
+...
+$ /usr/bin/puppet --version
+3.8.2
+```
+
 
 ## Scenario
 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+puppet module install puppetlabs-mongodb --modulepath forge
+puppet module install puppetlabs-apt --modulepath forge
+puppet module install puppetlabs-stdlib --modulepath forge
