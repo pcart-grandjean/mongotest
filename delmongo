@@ -5,6 +5,7 @@ sudo apt-get -y autoremove
 sudo rm -rf /var/log/mongodb*
 sudo rm -rf /var/lib/mongodb*
 sudo rm -f /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-key del 7F0CEB10
 
 echo "Any mongoDB packages left ?"
 dpkg --list | grep mongo
