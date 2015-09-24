@@ -38,7 +38,7 @@ node 'cubitus' {
     # server_package_name => 'mongodb', # This installs mongoDB 2.4.9 and fails
   }->
   class {'::mongodb::server':
-    auth => false,
+    auth => true,
   }
   # Get databases definitions from Hiera
   $mongodbs = hiera('mongodbs')
