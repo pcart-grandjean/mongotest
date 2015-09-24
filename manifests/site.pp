@@ -38,6 +38,7 @@ node 'cubitus' {
     # server_package_name => 'mongodb', # This installs mongoDB 2.4.9 and fails
   }->
   class {'::mongodb::server':
+    # This doesn't work. There is a PR to cover it: https://github.com/puppetlabs/puppetlabs-mongodb/pull/194
     auth => true,
   }
   # Get databases definitions from Hiera
