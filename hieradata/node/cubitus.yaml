@@ -1,2 +1,13 @@
-user: user1
-password_hash: a15fbfca5e3a758be80ceaf42458bcd8
+# Database definitions
+# Hashed passwords are created with tool hash.sh
+# > ./hash.sh user1 pass1
+# a15fbfca5e3a758be80ceaf42458bcd8
+# Test access:
+# > mongo --username {login} --password {password} {database}
+mongodbs:
+  testdb:
+    user: 'user1'
+    password_hash: 'a15fbfca5e3a758be80ceaf42458bcd8' # Password 'pass1'
+  toto:
+    user: 'toto'
+    password_hash: 'f8cd7cd28ef5ea2e189b0b8b8cadd27b' # Password 'toto'

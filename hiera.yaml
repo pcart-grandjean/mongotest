@@ -13,12 +13,12 @@
   - global
   # Data specific to a node. Ex: node/ncepaas0024.yaml
   # This works in a puppet apply or in hiera by appending "hostname=cubitus"
-  #- "node/%{hostname}"
+  - "node/%{hostname}"
   # This works with hiera with option "--json facter.json" where JSON file is output of "facter --json"
   #- "node/%{networking.hostname}"
   # This works with hiera with option "--json facts.json" where JSON file is output of "puppet facts"
-  - "node/%{values.hostname}"
-  - "node/%{values.networking.hostname}"
+  #- "node/%{values.hostname}"
+  #- "node/%{values.networking.hostname}"
   # Defaults values that can be overloaded by system specific data are in 'defaults.yaml'
   - defaults
 ...

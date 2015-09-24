@@ -1,6 +1,8 @@
-# This works with Puppet version 3.8.2 and will install MongoDB version 2.6.11
+# This initialy worked with Puppet version 3.8.2
+# Then I moved on to puppet version 4.2.1
 # It uses mongodb module provided by puppetlabs: https://forge.puppetlabs.com/puppetlabs/mongodb
 # Tested with modules:
+# $ puppet module --modulepath forge list
 # ├── puppetlabs-apt (v2.1.0)
 # ├── puppetlabs-mongodb (v0.11.0)
 # └── puppetlabs-stdlib (v4.6.0)
@@ -37,13 +39,35 @@ node 'cubitus' {
   }->
   class {'::mongodb::server':
     auth => false,
-  }->
-  # Create database 'testdb' with user 'user1' and password 'pass1. Test access:
-  # > mongo --username user1 --password pass1 testdb
-  # Hashed password is generated from command line. Ex for user 'user1' and password 'pass1'
-  # > echo -n 'user1:mongo:pass1' | md5sum | awk '{print $1}'
-  mongodb::db { 'testdb':
-    user => 'user1',
-    password_hash => 'a15fbfca5e3a758be80ceaf42458bcd8',
   }
+  # Get databases definitions from Hiera
+  $mongodbs = hiera('mongodbs')
+  $mongodbdef = {
+    require => Class['::mongodb::server'],
+  }
+  create_resources(::mongodb::db, $mongodbs, $mongodbdef)
+
+#  # Create database hash in Puppet file
+#  $mongodbs = {
+#    'testdb' => {
+#      user => 'user1',
+#      password_hash => 'a15fbfca5e3a758be80ceaf42458bcd8',
+#    },
+#    'toto' => {
+#      user => 'toto',
+#      password_hash => 'f8cd7cd28ef5ea2e189b0b8b8cadd27b',
+#    },
+#  }
+
+# Display a variable to debug it
+#  notify { 'mongodbs':
+#    message => $mongodbs,
+#  }
+
+#  # Specify databases in puppet file
+#  mongodb::db { 'testdb':
+#    user => 'user1',
+#    password_hash => 'a15fbfca5e3a758be80ceaf42458bcd8',
+#    require => Class['::mongodb::server'],
+#  }
 }

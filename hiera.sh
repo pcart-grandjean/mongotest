@@ -8,5 +8,6 @@ fi
 
 key=$1
 
-# hiera --config hiera.yaml --json facter.json --debug ${key} hostname=cubitus
-hiera --config hiera.yaml --json facts.json --debug ${key} hostname=cubitus
+# hiera --config hiera.yaml --json facter.json --debug ${key}
+# hiera --config hiera.yaml --json facts.json --debug ${key}
+hiera --config hiera.yaml --debug ${key} hostname=cubitus
